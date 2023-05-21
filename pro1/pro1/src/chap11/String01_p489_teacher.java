@@ -3,7 +3,7 @@ package chap11;
 //p488:문자열비교
 //기본타입 변수값을 비교할 때에는 ==연산자를 사용
 //but 문자열비교시에는 값을 비교할 때에는 equals()를 사용
-public class String01_p489 {
+public class String01_p489_teacher{
 
 	public static void main(String[] args) {
 		// 주소==주소

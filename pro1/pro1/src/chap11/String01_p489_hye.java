@@ -3,7 +3,7 @@ package chap11;
 //p488:문자열비교
 //기본타입 변수값을 비교할 때에는 ==연산자를 사용
 //but 문자열비교시에는 값을 비교할 때에는 equals()를 사용
-public class String01_p489 {
+public class String01_p489_hye {
 
 	public static void main(String[] args) {
 		// 주소==주소
@@ -28,6 +28,7 @@ public class String01_p489 {
 		
 		String name3 = new String("홍길동");
 		String name4 = new String("홍길동");	
+		
 		//System.out.println("name3="+name3);
 		//System.out.println("name4="+name4);
 		if(name3==name4) {
@@ -40,8 +41,6 @@ public class String01_p489 {
 		}else {
 			System.out.println("equals()일치x");
 		}
-		
-		
 		
 	}
 
