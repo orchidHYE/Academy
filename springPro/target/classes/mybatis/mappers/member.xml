@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<!-- 
+	<select id="유니크한id명" resultType="자바의 데이터타입">
+	<select id="totalMemberCNT" resultType="int">
+	myBatis에서는 자바의 데이터타입이 내장되어 별칭(alias)으로 제공되고 있다.
+	
+	별칭				자바의 데이터타입
+	string			String
+	short			short
+	int				Integer
+	map				Map
+	hashmap		HashMap
+	list				List
+	arraylist		ArrayList -->
+	
+	<!-- 회원수 조회 -->
+	<select id="totalMemberCNT" resultType="int">
+		<![CDATA[
+		SELECT COUNT(no)
+		FROM member
+		WHERE isshow = 'Y'
+		]]>
+	</select>
+	
+	<!-- 목록조회 -->
+	<select id="selectMemberList" resultType="hashmap"> <!-- 컬럼명이 키 값이다 -->
+		<![CDATA[
+		SELECT no, memberid, password, name, regdate, isshow
+		FROM member
+		WHERE isshow = 'Y'
+		]]>
+	</select>
+	
+	<!-- ID로 회원 정보 조회 -->
+	<select id="selectById" resultType="com.mycom.member.domain.MemberDTO" parameterType="string">
+		<![CDATA[
+		SELECT no, memberid, password, name, regdate, isshow
+		FROM member
+		WHERE memberid = #{memberid}
+		]]>
+	</select>
+	
+	<!-- 회원삭제 -->
+	<!-- //회원삭제 (update용)
+			//파라미터 String memberid - 삭제하고싶은 회원id
+			public void updateIsShow(String memberid) {
+			sqlSession.update("member.updateIsShow", memberid);  -->
+	<update id="updateIsShow" parameterType="string">
+	<![CDATA[
+	UPDATE member
+	SET isshow='N'
+	WHERE memberid=#{memberid} AND isshow = 'Y'
+	]]>
+	</update>
+</mapper>
